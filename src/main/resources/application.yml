@@ -1,0 +1,33 @@
+# Spring data source setting
+spring:
+  datasource:
+#    type: org.apache.commons.dbcp.basicDatasource
+    drive-class-name: com.mysql.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/demo?userUnicode=true&characterEncoding=utf-8&verifyServerCertificate=false
+#    url: jdbc:mysql://localhost:3306/demo?userUnicode=true&characterEncoding=utf-8&verifyServerCertificate=false&useSSL=false
+    username: root
+    password: root
+    initialSizt: 10
+    maxActive: 100
+    minIdle: 3
+    maxWait: 5000
+
+# MyBatis setting
+mybatis:
+  type-aliases-package: com.example.demo.pojo
+  mapper-locations: classpath:com/example/demo/mapper/*.xml
+
+# log4j setting
+logging:
+  config: classpath:static/log4j2.xml
+  file:
+    path: C:/Users/Leo/Desktop/logs
+
+# druid recycle
+druid:
+  removeAbandoned: true
+  removeAbandonedTimeout: 300
+  logAbandoned: true
+
+server:
+  port: 8080
