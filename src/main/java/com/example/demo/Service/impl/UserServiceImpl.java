@@ -41,14 +41,12 @@ public class UserServiceImpl implements UserService {
     @Override
     @Transactional(propagation = Propagation.REQUIRED)
     public int delete(User user) {
-        if (user.getDeleted() == 0){
+        if (user.getDeleted() == 0) {
             userMapper.delete(user);
             return 1;
-        } else if (user.getDeleted() == 1) {
-            System.out.println("Deleted Already");
-            return -1;
         } else {
-            return 0;
+            System.out.println("Already deleted.");
+            return -1;
         }
     }
 }

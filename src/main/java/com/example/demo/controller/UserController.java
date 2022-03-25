@@ -45,8 +45,8 @@ public class UserController {
     */
 
     @RequestMapping("/findByName")
-    public User findByName(String name) {
-        return userServiceImpl.findByName(name);
+    public User findByName(String user_name) {
+        return userServiceImpl.findByName(user_name);
     }
 
     @RequestMapping("/insert")
