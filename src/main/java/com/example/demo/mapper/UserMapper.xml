@@ -8,6 +8,7 @@
         from demo.user_info
         where isDeleted = 0;
     </select>
+    <!-- resultType 可以使用一个新的展示类(仅包含部分实体类中的字段)而非实体类来保证前端展示信息不包含敏感信息 -->
     <select id="selectByName" resultType="com.example.demo.pojo.User">
         select user_id, user_name, user_password, create_time, update_time
         from demo.user_info
