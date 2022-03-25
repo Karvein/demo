@@ -54,4 +54,8 @@ public class UserController {
         return userServiceImpl.insert(user);
     }
 
+    @RequestMapping("/delete")
+    public int delete(User user) {
+        return userServiceImpl.delete(user);
+    }
 }

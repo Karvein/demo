@@ -4,13 +4,26 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.example.demo.mapper.UserMapper">
     <select id="selectAll" resultType="com.example.demo.pojo.User">
-        select user_id,user_name,user_password from demo.user_info
+        select user_id, user_name, user_password, create_time, update_time
+        from demo.user_info
+        where isDeleted = 0;
     </select>
     <select id="selectByName" resultType="com.example.demo.pojo.User">
-        select user_id,user_name,user_password from demo.user_info where user_name = #{user_name}
+        select user_id, user_name, user_password, create_time, update_time
+        from demo.user_info
+        where user_name = #{user_name}
+          and isDeleted = 0;
     </select>
     <insert id="insert" parameterType="com.example.demo.pojo.User" useGeneratedKeys="true" keyProperty="user_id">
-        insert into demo.user_info(user_name,user_password) values (#{user_name},#{user_password})
+        insert into demo.user_info(user_name, user_password, now(), now())
+        values (#{user_name}, #{user_password},#{create_time},#{update_time});
     </insert>
+    <update id="delete" parameterType="com.example.demo.pojo.User">
+        update demo.user_info
+        set isDeleted   = 1,
+            update_time = now()
+        where user_name = #{user_name}
+          and user_password = #{user_password};
+    </update>
 
 </mapper>

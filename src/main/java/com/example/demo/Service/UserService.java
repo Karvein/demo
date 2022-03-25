@@ -11,6 +11,7 @@ public interface UserService {
     public List<User> findAll();
     public User findByName(String name);
     public int insert(User user);
+    public int delete(User user);
 //    public boolean alert(User user,String name,String password);
 
 }

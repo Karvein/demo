@@ -12,4 +12,5 @@ public interface UserMapper {
     public List<User> selectAll();
     public User selectByName(String name);
     public int insert(User user);
+    public Boolean delete(User user);
 }
