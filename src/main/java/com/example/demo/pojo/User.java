@@ -10,18 +10,18 @@ import org.springframework.stereotype.Component;
 @Getter
 public class User {
 
-    // 将JSONField(name= "???")注释后,前端展示json形式将为POJO形式
-    @JSONField(name = "用户ID")
+    // 将JSONField(name= "???", ordinal = ?), name为前端展示名, ordinal为展现次序
+    @JSONField(name = "用户ID", ordinal = 1)
     protected Integer user_id;
-    @JSONField(name = "用户名")
+    @JSONField(name = "用户名", ordinal = 2)
     public String user_name;
-    @JSONField(name = "用户密码")
+    @JSONField(name = "用户密码", ordinal = 3)
     private String user_password;
-    @JSONField(name = "建立时间")
+    @JSONField(name = "建立时间", ordinal =5)
     private String create_time;
-    @JSONField(name = "更新时间")
+    @JSONField(name = "更新时间", ordinal = 6)
     private String update_time;
-    @JSONField(name = "逻辑删除")
+    @JSONField(name = "逻辑删除", ordinal = 4)
     private int deleted;
 
 //    public void setUser_id(int id) {
