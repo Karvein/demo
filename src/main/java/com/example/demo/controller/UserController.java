@@ -44,11 +44,13 @@ public class UserController {
     }
     */
 
+    // 这里定义的变量为url传输时使用的变量,名称需一致
     @RequestMapping("/findByName")
     public User findByName(String user_name) {
         return userServiceImpl.findByName(user_name);
     }
 
+    // 此处定义的User,url内传输的值需与User类内的成员变量一致
     @RequestMapping("/insert")
     public int insert(User user) {
         return userServiceImpl.insert(user);
