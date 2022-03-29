@@ -21,25 +21,25 @@ public class UserServiceImpl implements UserService {
     private UserMapper userMapper;
 
     @Override
-    @Transactional(propagation = Propagation.REQUIRED,readOnly = true)
+    @Transactional(propagation = Propagation.REQUIRES_NEW,readOnly = true)
     public List<User> findAll() {
         return userMapper.selectAll();
     }
 
     @Override
-    @Transactional(propagation = Propagation.REQUIRED,readOnly = true)
+    @Transactional(propagation = Propagation.REQUIRES_NEW,readOnly = true)
     public User findByName(String name) {
         return userMapper.selectByName(name);
     }
 
     @Override
-    @Transactional(propagation = Propagation.REQUIRED)
+    @Transactional(propagation = Propagation.REQUIRES_NEW)
     public int insert(User user) {
         userMapper.insert(user);
         return user.getUser_id();
     }
     @Override
-    @Transactional(propagation = Propagation.REQUIRED)
+    @Transactional(propagation = Propagation.REQUIRES_NEW)
     public int delete(User user) {
         if (user.getDeleted() == 0) {
             userMapper.delete(user);
