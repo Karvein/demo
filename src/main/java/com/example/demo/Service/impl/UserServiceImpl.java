@@ -39,8 +39,12 @@ public class UserServiceImpl implements UserService {
 
     @Override
     @Transactional(propagation = Propagation.REQUIRES_NEW,readOnly = true)
-    public User findByName(String name) {
-        return userMapper.selectByName(name);
+    public UserVo findByName(String name) {
+        User user = userMapper.selectByName(name);
+        UserVo vo = new UserVo();
+        vo.setUser_name(user.getUser_name());
+        vo.setUser_password(user.getUser_password());
+        return vo;
     }
 
     @Override
