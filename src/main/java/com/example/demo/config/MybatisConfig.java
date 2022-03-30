@@ -10,8 +10,6 @@ import org.springframework.context.annotation.Configuration;
 import javax.sql.DataSource;
 
 @Configuration
-// 扫描Mybatis包
-@MapperScan("com.example.demo.mapper.UserMapper")
 public class MybatisConfig {
     @Bean
     /*

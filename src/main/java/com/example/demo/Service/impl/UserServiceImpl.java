@@ -18,7 +18,6 @@ import java.util.List;
 // 服务注解
 @Transactional(propagation = Propagation.REQUIRED,rollbackFor = Exception.class)
 // 事务注解
-//@ComponentScan("com.example.demo.mapper")
 public class UserServiceImpl implements UserService {
     @Autowired
     private UserMapper userMapper;
