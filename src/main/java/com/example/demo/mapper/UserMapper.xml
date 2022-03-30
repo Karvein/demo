@@ -5,22 +5,22 @@
 <mapper namespace="com.example.demo.mapper.UserMapper">
     <select id="selectAll" resultType="com.example.demo.pojo.User">
         select user_id, user_name, user_password, create_time, update_time
-        from demo.user_info
+        from demo.user
         where isDeleted = 0;
     </select>
     <!-- resultType 可以使用一个新的展示类(仅包含部分实体类中的字段)而非实体类来保证前端展示信息不包含敏感信息 -->
     <select id="selectByName" resultType="com.example.demo.pojo.User">
         select user_id, user_name, user_password, create_time, update_time
-        from demo.user_info
+        from demo.user
         where user_name = #{user_name}
           and isDeleted = 0;
     </select>
     <insert id="insert" parameterType="com.example.demo.pojo.User" useGeneratedKeys="true" keyProperty="user_id">
-        insert into demo.user_info(user_name, user_password, now(), now())
+        insert into demo.user(user_name, user_password, now(), now())
         values (#{user_name}, #{user_password},#{create_time},#{update_time});
     </insert>
     <update id="delete" parameterType="com.example.demo.pojo.User">
-        update demo.user_info
+        update demo.user
         set isDeleted   = 1,
             update_time = now()
         where user_name = #{user_name}
