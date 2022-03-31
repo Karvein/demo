@@ -40,8 +40,9 @@ public class UserController {
 
     // 这里定义的变量为url传输时使用的变量,名称需一致
     @RequestMapping("/findByName")
-    public UserVo findByName(String user_name) {
-        return userServiceImpl.findByName(user_name);
+    public String findByName(String user_name) {
+        String jsonOutput = JSON.toJSONString(userServiceImpl.findByName(user_name));
+        return jsonOutput;
     }
 
     // 此处定义的User,url内传输的值需与User类内的成员变量一致
