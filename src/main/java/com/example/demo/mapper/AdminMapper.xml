@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.demo.mapper.AdminMapper">
+    <!-- resultType需要保证数据和POJO类一致，污染无法满足ORM，导致部分数据无法显示，resultMap可以自己定义映射关系
+            其中使用resultMap时，column对应为数据库内字段名，property对应为POJO字段名 -->
+    <!-- resultType 可以使用一个新的展示类(仅包含部分实体类中的字段)而非实体类来保证前端展示信息不包含敏感信息 -->
+    <resultMap type="com.example.demo.pojo.Admin" id="adminResultMap">
+        <id property="userId" column="admin_id" />
+        <result property="userName" column="admin_name" />
+        <result property="userPassword" column="admin_password" />
+        <result property="authArea" column="admin_area" />
+    </resultMap>
+
+    <select id="findAdmin" resultMap="adminResultMap">
+        select admin_id, admin_name, admin_password, admin_area
+        from demo.admin
+        where admin_name = #{name}
+          and admin_password = #{password};
+    </select>
+
+</mapper>
