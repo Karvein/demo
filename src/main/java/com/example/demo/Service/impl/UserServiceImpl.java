@@ -11,15 +11,19 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
+import javax.annotation.Resource;
 import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.List;
 @Service
 // 服务注解
 @Transactional(propagation = Propagation.REQUIRED,rollbackFor = Exception.class)
 // 事务注解
 public class UserServiceImpl implements UserService {
-    @Autowired
+    // @Resource 和 @Autowired的区别
+    // @Autowired可以对构造器、方法、参数、字段使用，@Resource只能对方法、字段使用
+    // @Autowired默认是byType可以使用@Qualifier指定Name，@Resource默认ByName如果找不到则ByType
+    // 使用@Autowired最好配合@Qualifier
+    @Resource
     private UserMapper userMapper;
 
     @Override
