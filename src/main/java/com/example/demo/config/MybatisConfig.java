@@ -11,6 +11,7 @@ import javax.sql.DataSource;
 
 @Configuration
 public class MybatisConfig {
+    // 配置数据源,意义在于能够确认数据库应用程序所使用的数据库或者数据库服务器
     @Bean
     /*
         bean标签：指定创建对象的

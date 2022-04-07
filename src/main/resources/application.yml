@@ -13,9 +13,11 @@ spring:
     maxWait: 5000
 
 # MyBatis setting
-mybatis:
-  type-aliases-package: com.example.demo.pojo
-  mapper-locations: classpath:com/example/demo/mapper/*.xml
+# 当mapper和xml文件不在同级目录下时，需要配置该文件的扫描路径，classpath：后直接跟DemoApplicaiton的同级目录路径
+#mybatis:
+#  mapper-locations:
+#  type-aliases-package:
+
 
 # log4j setting
 logging:
