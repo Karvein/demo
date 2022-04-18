@@ -17,6 +17,7 @@ import java.util.List;
 @Service
 // 服务注解
 @Transactional(propagation = Propagation.REQUIRED,rollbackFor = Exception.class)
+/* @Transactional注解在类上说明对类中所有方法进行了事务管理，此处声明事务创建的方式，以及回滚类型*/
 // 事务注解
 public class UserServiceImpl implements UserService {
     // @Resource 和 @Autowired的区别
@@ -27,7 +28,8 @@ public class UserServiceImpl implements UserService {
     private UserMapper userMapper;
 
     @Override
-    @Transactional(propagation = Propagation.REQUIRES_NEW,readOnly = true)
+    @Transactional(readOnly = true)
+    // 声明了事务为只读,方法的@Transactional会覆盖类的事务声明
     public ArrayList<UserVo> findAll() {
         ArrayList<UserVo> userVos = new ArrayList<>();
         List<User> users = userMapper.selectAll();
@@ -42,7 +44,7 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    @Transactional(propagation = Propagation.REQUIRES_NEW,readOnly = true)
+    @Transactional(readOnly = true)
     public UserVo findByName(String name) {
         User user = userMapper.selectByName(name);
         UserVo vo = new UserVo();
@@ -52,13 +54,13 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    @Transactional(propagation = Propagation.REQUIRES_NEW)
+//    @Transactional(propagation = Propagation.REQUIRES_NEW)
     public int insert(User user) {
         userMapper.insert(user);
         return user.getUser_id();
     }
     @Override
-    @Transactional(propagation = Propagation.REQUIRES_NEW)
+//    @Transactional(propagation = Propagation.REQUIRES_NEW)
     public int delete(User userVo) {
         if (userVo.getDeleted() == 0) {
             userMapper.delete(userVo);

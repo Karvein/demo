@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.RestController;
 import javax.annotation.Resource;
 
 @RestController
-@RequestMapping("/userInfoPage")
+@RequestMapping("/users")
 public class UserController {
     @Resource
     private UserServiceImpl userServiceImpl;
@@ -55,4 +55,9 @@ public class UserController {
     public int delete(User user) {
         return userServiceImpl.delete(user);
     }
+
+//    @RequestMapping("/ask")
+//    public String display(){
+//        return "You have asked once";
+//    }
 }

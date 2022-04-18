@@ -11,12 +11,57 @@ spring:
     maxActive: 100
     minIdle: 3
     maxWait: 5000
+## spring数据配置
+#spring:
+#  application:
+#    name: enhance-data-redis-demo
+#  redis:
+#    # 默认数据源
+#    host: ${SPRING_REDIS_HOST:default-host}
+#    port: ${SPRING_REDIS_PORT:6379}
+#    password: ${SPRING_REDIS_PASSWORD:WenPan@123}
+#    database: ${SPRING_REDIS_DATABASE:0}
+#    client-type: lettuce
+#    lettuce:
+#      pool:
+#        max-active: ${SPRING_REDIS_POOL_MAX_ACTIVE:16}
+#        max-idle: ${SPRING_REDIS_POOL_MAX_IDLE:16}
+#        max-wait: ${SPRING_REDIS_POOL_MAX_WAIT:5000}
+#    datasource:
+#      # 第一个数据源
+#      source1:
+#        host: ${SPRING_REDIS_HOST:wenpan-host}
+#        port: ${SPRING_REDIS_PORT:6379}
+#        password: ${SPRING_REDIS_PASSWORD:WenPan@123}
+#        database: ${SPRING_REDIS_DATABASE:1}
+#      # 第二个数据源
+#      source2:
+#        host: ${SPRING_REDIS_HOST:yuanping-host}
+#        port: ${SPRING_REDIS_PORT:6379}
+#        password: ${SPRING_REDIS_PASSWORD:WenPan@123}
+#        database: ${SPRING_REDIS_DATABASE:2}
+#
+#stone:
+#  redis:
+#    # 开启多数据源动态切换redis db
+#    dynamic-database: true
+
+#redis:
+#  host: 127.0.0.1
+#  port: 6379
+#  pass:
+#  database: 0
+#  maxIdle: 300
+#  maxWait: 3000
+##  是否在从池中取出连接前进行检验,如果检查失败,则从池中去除连接并尝试取出另一个
+#  restOnBorrow: true
 
 # MyBatis setting
-# 当mapper和xml文件不在同级目录下时，需要配置该文件的扫描路径，classpath：后直接跟DemoApplicaiton的同级目录路径
-#mybatis:
-#  mapper-locations:
-#  type-aliases-package:
+# 当mapper和xml文件不在同级目录下时，需要配置该文件的扫描路径，
+#  classpath：指的是编译后target/class路径，根据编译后的路径去配置mapper-locations和type-aliases-package
+mybatis:
+  mapper-locations: classpath:com/example/demo/mapper/xml/*.xml
+  type-aliases-package: com.example.demo.mapper
 
 
 # log4j setting

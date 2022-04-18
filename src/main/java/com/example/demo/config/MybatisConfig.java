@@ -16,7 +16,7 @@ public class MybatisConfig {
     /*
         bean标签：指定创建对象的
             id属性：唯一标识（配置文件中唯一）
-            class属性：实现类的全限定名
+            class属性：实现类的全限定名,即package.className
             scope属性：范围
                 取值：singleton(单例默认) prototype（多例） 扩展：request,session,globesession..
                      singleton:对象是随着容器的创建而创建 随着容器的销毁而销毁 自始至终只有一个对象
