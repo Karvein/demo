@@ -25,8 +25,7 @@ public class UserController {
     // 返回形式为fastjson
     @RequestMapping("/findAll")
     public String findAll() {
-        String jsonOutput = JSON.toJSONString(userServiceImpl.findAll());
-        return jsonOutput;
+        return JSON.toJSONString(userServiceImpl.findAll());
     }
 
     /*
@@ -44,10 +43,10 @@ public class UserController {
     // 此处使用Gson返回
     // @RequestParam定义url传输参数,value为变量名,required为是否为空,true时为空会报错,defaultValue为默认值
     @RequestMapping("/findByName")
-    public String findByName(@RequestParam(value = "name",required = false,defaultValue = "null") String user_name) {
+    public String findByName(@RequestParam(value = "name", required = false, defaultValue = "null") String user_name) {
 //        String jsonOutput = JSON.toJSONString(userServiceImpl.findByName(user_name));
-        String gsonOutput = new Gson().toJson(userServiceImpl.findByName(user_name));
-        return gsonOutput;
+//        String gsonOutput = new Gson().toJson(userServiceImpl.findByName(user_name));
+        return new Gson().toJson(userServiceImpl.findByName(user_name));
 
     }
 
