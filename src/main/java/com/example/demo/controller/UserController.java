@@ -5,6 +5,7 @@ import com.example.demo.Service.impl.UserServiceImpl;
 import com.example.demo.pojo.User;
 import com.google.gson.Gson;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.annotation.Resource;
@@ -41,8 +42,9 @@ public class UserController {
 
     // 这里定义的变量为url传输时使用的变量,名称需一致
     // 此处使用Gson返回
+    // @RequestParam定义url传输参数,value为变量名,required为是否为空,true时为空会报错,defaultValue为默认值
     @RequestMapping("/findByName")
-    public String findByName(String user_name) {
+    public String findByName(@RequestParam(value = "name",required = false,defaultValue = "null") String user_name) {
 //        String jsonOutput = JSON.toJSONString(userServiceImpl.findByName(user_name));
         String gsonOutput = new Gson().toJson(userServiceImpl.findByName(user_name));
         return gsonOutput;

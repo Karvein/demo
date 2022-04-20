@@ -3,8 +3,7 @@
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.example.demo.mapper.UserMapper">
-    <!-- resultType需要保证数据和POJO类一致，污染无法满足ORM，导致部分数据无法显示，resultMap可以自己定义映射关系
-            其中使用resultMap时，column对应为数据库内字段名，property对应为POJO字段名 -->
+    <!-- resultType需要保证数据和POJO类一致，否则无法满足ORM，导致部分数据无法显示 -->
     <select id="selectAll" resultType="com.example.demo.pojo.User">
         select user_id, user_name, user_password, create_time, update_time
         from demo.user
@@ -28,5 +27,4 @@
         where user_name = #{user_name}
           and user_password = #{user_password};
     </update>
-
 </mapper>

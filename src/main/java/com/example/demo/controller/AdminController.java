@@ -2,23 +2,41 @@ package com.example.demo.controller;
 
 import com.alibaba.fastjson.JSON;
 import com.example.demo.Service.impl.AdminServiceImpl;
+import com.example.demo.vo.UserVo;
+import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.annotation.Resource;
-
-@RestController
-@RequestMapping("/login")
+/*
+* @RestController限定了RequestMapping的返回只能是String,无法使用重定向
+* @Controller可使用redirect:/url进行重定向
+* */
+@Controller
+@RequestMapping("/admins")
 public class AdminController {
     // 管理员控制接口
     // 依赖注入到服务接口调用
     @Resource
     private AdminServiceImpl adminServiceImpl;
 
-    @RequestMapping("/findAdmin")
-    public String findAdmin(String name, String password) {
-        // 返回json字符串,其中前端传输的变量应未name和password而非VO类或POJO类的成员变量
-        String jsonOutput = JSON.toJSONString(adminServiceImpl.findAdmin(name, password));
-        return jsonOutput;
+    // 此处代码有误,无法解析前端传输的string
+//    @RequestMapping("/login")
+//    public String findAdmin(String json) {
+//        // 接收json输入,按照传输进入的数据转化为vo类,再返回json结果
+//        System.out.println(json);
+//        UserVo uservo = JSON.parseObject(json, UserVo.class);
+//        if (!(adminServiceImpl.findAdmin(uservo.getUser_name(), uservo.getUser_password()).getUserId() >= 0)) {
+//            return "empty input";
+//        } else {
+//            return String.valueOf(adminServiceImpl.findAdmin(uservo.getUser_name(), uservo.getUser_password()).getUserId());
+//        }
+//    }
+    @RequestMapping("/login")
+    public String findAdmin(@RequestParam String name ,@RequestParam String pwd) {
+        adminServiceImpl.findAdmin(name,pwd);
+        // 重定向失败
+        return "redirect:/users/findAll";
     }
 }
