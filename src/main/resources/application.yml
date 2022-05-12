@@ -1,5 +1,7 @@
+# --- 来分割文档块，定义多个spring.profiles
 # Spring data source setting
 spring:
+  profiles: dev
   datasource:
 #    type: org.apache.commons.dbcp.basicDatasource
     drive-class-name: com.mysql.jdbc.Driver
@@ -11,6 +13,7 @@ spring:
     maxActive: 100
     minIdle: 3
     maxWait: 5000
+
 ## spring数据配置
 #spring:
 #  application:
@@ -76,5 +79,40 @@ druid:
   removeAbandonedTimeout: 300
   logAbandoned: true
 
+#context-path 访问路径前缀
+#port 访问端口
 server:
   port: 8080
+  servlet:
+    context-path: /test
+
+---
+spring:
+  profiles: test
+
+
+#数据结构
+#字面量-包含特殊字符,转义符,空格时要加引号,单引号不转义,双引号转义
+testNumber: 12.5
+testName1: "Tom Holland"
+testName2: 'Tom Cruise'
+#对象
+#写法一
+testUser1:
+  sex: 'male'
+  age: 18
+#写法二
+testUser2: {name: 'Tom',age: 18,sex: 'male'}
+#数组-List,Set
+#写法一
+names1:
+  - 'Tom'
+  - 'Jack'
+  - 'Alice'
+#写法二
+names2: ['Jack','Boris','Carl']
+
+---
+spring:
+  profiles: prod
+

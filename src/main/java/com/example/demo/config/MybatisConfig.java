@@ -9,6 +9,9 @@ import org.springframework.context.annotation.Configuration;
 
 import javax.sql.DataSource;
 
+/**
+ *
+ */
 @Configuration
 public class MybatisConfig {
     // 配置数据源,意义在于能够确认数据库应用程序所使用的数据库或者数据库服务器
