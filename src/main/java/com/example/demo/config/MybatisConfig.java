@@ -18,7 +18,7 @@ public class MybatisConfig {
             id属性：唯一标识（配置文件中唯一）
             class属性：实现类的全限定名,即package.className
             scope属性：范围
-                取值：singleton(单例默认) prototype（多例） 扩展：request,session,globesession..
+                取值：singleton(单例默认) prototype（多例） 扩展：request,session,global session..
                      singleton:对象是随着容器的创建而创建 随着容器的销毁而销毁 自始至终只有一个对象
                      prototype：对象的创建和销毁与容器的创建和销毁无关
                                每次执行getBean的时候创建新的对象 调用一次创建一次
@@ -28,6 +28,7 @@ public class MybatisConfig {
     */
     @ConfigurationProperties(prefix = "spring.datasource")
     public DataSource dataSource() {
+//        return new BasicDataSource();
         return new DruidDataSource();
     }
 }

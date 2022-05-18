@@ -1,4 +1,3 @@
-
 # Spring data source setting
 spring:
   datasource:
@@ -8,10 +7,16 @@ spring:
 #    url: jdbc:mysql://localhost:3306/demo?userUnicode=true&characterEncoding=utf-8&verifyServerCertificate=false&useSSL=false
     username: root
     password: root
-    initialSizt: 10
+    initialSize: 10
     maxActive: 100
     minIdle: 3
     maxWait: 5000
+#    hikari:
+#      driver-class-name:
+#      jdbc-url:
+#      username: jdbc:mysql://localhost:3306/demo?userUnicode=true&characterEncoding=utf-8&verifyServerCertificate=false
+#      password:
+  profiles: dev
 ## spring数据配置
 #spring:
 #  application:
@@ -72,10 +77,49 @@ logging:
     path: C:/Users/Leo/Desktop/logs
 
 # druid recycle
-druid:
-  removeAbandoned: true
-  removeAbandonedTimeout: 300
-  logAbandoned: true
+#druid:
+#  removeAbandoned: true
+#  removeAbandonedTimeout: 300
+#  logAbandoned: true
 
+#server
+#port 访问端口
 server:
   port: 8080
+
+---
+spring:
+  profiles: test
+server:
+  port: 8081
+#context-path 访问路径前缀
+  servlet:
+    context-path: /test
+
+#数据结构
+#字面量-包含特殊字符,转义符,空格时要加引号,单引号不转义,双引号转义
+testNumber: 12.5
+testName1: "Tom Holland"
+testName2: 'Tom Cruise'
+#对象
+#写法一
+testUser1:
+  sex: 'male'
+  age: 18
+#写法二
+testUser2: { name: 'Tom',age: 18,sex: 'male' }
+#数组-List,Set
+#写法一
+names1:
+  - 'Tom'
+  - 'Jack'
+  - 'Alice'
+#写法二
+names2: [ 'Jack','Boris','Carl' ]
+
+---
+#生产环境
+spring:
+  profiles: prod
+server:
+  port: 8082
