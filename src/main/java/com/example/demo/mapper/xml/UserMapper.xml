@@ -16,6 +16,24 @@
         where user_name = #{user_name}
           and isDeleted = 0;
     </select>
+
+    <!-- sql 拼接条件,if,trim标签 -->
+    <!--  <![CDATA[ 需要解释器忽略的语句或是符号 ]]>  -->
+    <select id="getUsertList_if_trim" resultType="com.example.demo.pojo.User">
+        SELECT *
+        FROM user u
+        <trim prefix="WHERE" prefixOverrides="AND|OR">
+            <if test="username !=null ">
+                u.username LIKE CONCAT(CONCAT('%', #{username, jdbcType=VARCHAR}),'%')
+            </if>
+            <if test="sex != null and sex != '' ">
+                AND u.sex = #{sex, jdbcType=INTEGER}
+            </if>
+            <if test="birthday != null ">
+                AND u.birthday = #{birthday, jdbcType=DATE}
+            </if>
+        </trim>
+    </select>
     <insert id="insert" parameterType="com.example.demo.pojo.User" useGeneratedKeys="true" keyProperty="user_id">
         insert into demo.user(user_name, user_password, now(), now())
         values (#{user_name}, #{user_password},#{create_time},#{update_time});

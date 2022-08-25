@@ -4,16 +4,16 @@ import com.example.demo.Service.UserService;
 import com.example.demo.mapper.UserMapper;
 import com.example.demo.pojo.User;
 import com.example.demo.vo.UserVo;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.ComponentScan;
-import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
-
 import javax.annotation.Resource;
 import java.util.ArrayList;
 import java.util.List;
+
+/**
+ * 实现类
+ */
 @Service
 // 服务注解
 @Transactional(propagation = Propagation.REQUIRED,rollbackFor = Exception.class)
@@ -27,6 +27,10 @@ public class UserServiceImpl implements UserService {
     @Resource
     private UserMapper userMapper;
 
+    /**
+     * 查询所有用户
+     * @return UserVo
+     */
     @Override
     @Transactional(readOnly = true)
     // 声明了事务为只读,方法的@Transactional会覆盖类的事务声明
