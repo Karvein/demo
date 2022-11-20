@@ -1,9 +1,6 @@
 package com.example.demo.pojo;
 
-import lombok.Builder;
-import lombok.Getter;
-import lombok.Setter;
-import lombok.ToString;
+import lombok.*;
 import org.springframework.stereotype.Component;
 
 @Component
@@ -11,6 +8,8 @@ import org.springframework.stereotype.Component;
 @Getter
 @Builder
 @ToString
+@AllArgsConstructor
+@NoArgsConstructor
 public class User {
 
     protected Integer user_id;

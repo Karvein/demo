@@ -4,6 +4,7 @@ import com.example.demo.Service.UserService;
 import com.example.demo.mapper.UserMapper;
 import com.example.demo.pojo.User;
 import com.example.demo.vo.UserVo;
+import org.springframework.stereotype.Repository;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
@@ -15,6 +16,7 @@ import java.util.List;
  * 实现类
  */
 @Service
+//@Repository
 // 服务注解
 @Transactional(propagation = Propagation.REQUIRED,rollbackFor = Exception.class)
 /* @Transactional注解在类上说明对类中所有方法进行了事务管理，此处声明事务创建的方式，以及回滚类型*/
